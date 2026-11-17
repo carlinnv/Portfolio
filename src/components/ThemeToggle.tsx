@@ -12,14 +12,9 @@ const STORAGE_KEY = 'theme'
 /** Length of the color fade; must match the 0.5s in base.css (.theme-fading). */
 const FADE_MS = 500
 
-/** The saved choice (applied early by public/theme-init.js), else the system setting. */
-const initialTheme = (): Theme => {
-  const applied = document.documentElement.dataset.theme
-  if (applied === 'dark' || applied === 'light') return applied
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light'
-}
+/** The saved choice (applied early by public/theme-init.js), else light. */
+const initialTheme = (): Theme =>
+  document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
 
 /**
  * Light/dark mode button. Its label says what pressing it will do:

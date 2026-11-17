@@ -82,14 +82,14 @@
 /*
  * DARK MODE COLORS ("night" version of the palette)
  *
- * Used when the visitor's computer is set to dark mode, or when they press
- * the "Dark mode" button. The SAME colors appear in both blocks below (one
- * for each case), so if you change a dark color, change it in both.
+ * The site always starts in light mode. These colors apply only after the
+ * visitor presses the "Dark mode" button (which sets <html data-theme="dark">;
+ * the choice is remembered in their browser).
  * Screen only: printing always uses the light colors.
  * Contrast ratios are against the dark page (#1b241e) and windows (#1f2e2b).
  */
-@media screen and (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
+@media screen {
+  :root[data-theme='dark'] {
     color-scheme: dark;
     --color-page: #1b241e; /* deep forest-night page background */
     --color-surface: #1f2e2b; /* inside of windows */
@@ -107,33 +107,6 @@
     --color-shadow: #6b4553; /* pixel shadow behind windows */
     --color-rule: #3a4a3c; /* dashed dividers */
     --color-focus: #e9c99f; /* keyboard focus outline */
-    --color-icon-leaf: #8fe6bb;
-    --color-icon-bag: #dbbf9e;
-    --color-icon-bag-star: #9a4a1c;
-    --color-icon-radish: #f08aa4;
-    --color-icon-radish-leaves: #8fe6bb;
-  }
-}
-
-@media screen {
-  :root[data-theme='dark'] {
-    color-scheme: dark;
-    --color-page: #1b241e;
-    --color-surface: #1f2e2b;
-    --color-titlebar: #2c4a45;
-    --color-tag: #24443a;
-    --color-highlight: #7a4a5a;
-    --color-menu-hover: #263834;
-    --color-text: #f1efd8;
-    --color-heading: #8fe6bb;
-    --color-titlebar-text: #eefbe6;
-    --color-muted: #c9c0a6;
-    --color-link: #e9c99f;
-    --color-link-hover: #8fe6bb;
-    --color-border: #7fa685;
-    --color-shadow: #6b4553;
-    --color-rule: #3a4a3c;
-    --color-focus: #e9c99f;
     --color-icon-leaf: #8fe6bb;
     --color-icon-bag: #dbbf9e;
     --color-icon-bag-star: #9a4a1c;

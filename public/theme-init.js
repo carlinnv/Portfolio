@@ -11,6 +11,6 @@
       document.documentElement.setAttribute('data-theme', saved)
     }
   } catch (error) {
-    // Storage blocked (e.g. some private-browsing modes): use the system setting.
+    // Storage blocked (e.g. some private-browsing modes): start in light mode.
   }
 })()
