@@ -203,7 +203,7 @@ The repo already exists (`main`, remote `origin` → `https://github.com/carlinn
   git rm -r --cached frontend
   ```
 - [x] Run `git status` and confirm nothing under `template/`, `node_modules/`, `dist/`, or any `.env` file is listed.
-- [ ] **⏸ CHECKPOINT:** show me `git status`. I will commit and push.
+- [x] **⏸ CHECKPOINT:** show me `git status`. I will commit and push.
 
 ---
 
@@ -254,7 +254,7 @@ The repo already exists (`main`, remote `origin` → `https://github.com/carlinn
         - id: deployment
           uses: actions/deploy-pages@v4
   ```
-  > **Done, with changes:** the committed workflow uses the current major versions (`checkout@v7`, `setup-node@v7`, `upload-pages-artifact@v5`, `deploy-pages@v5`), sets `persist-credentials: false` on checkout, and drops `cache: npm` to avoid cache poisoning in a publishing workflow. `.github/workflows/deploy.yml` is the source of truth.
+  > **Done, with changes:** the committed workflow uses the current major versions (`checkout@v7`, `setup-node@v7`, `upload-pages-artifact@v5`, `deploy-pages@v5`), sets `persist-credentials: false` on checkout, and drops `cache: npm` to avoid cache poisoning in a publishing workflow. `.github/workflows/deploy.yml` is the source of truth. Added later: `.github/workflows/ci.yml` runs the same checks (read-only, no deploy) on every pull request to `main`, including Dependabot's.
 - [x] Set Pages source to GitHub Actions — either **Settings → Pages → Source → GitHub Actions**, or:
   ```bash
   gh api -X POST repos/carlinnv/Portfolio/pages -f build_type=workflow
@@ -297,11 +297,11 @@ The repo already exists (`main`, remote `origin` → `https://github.com/carlinn
 
 ## Phase 9 — CodeQL
 
-- [ ] Enable CodeQL default setup — **Settings → Code security → Code scanning → CodeQL analysis → Set up → Default**, or:
+- [x] Enable CodeQL default setup — **Settings → Code security → Code scanning → CodeQL analysis → Set up → Default**, or:
   ```bash
   gh api -X PATCH repos/carlinnv/Portfolio/code-scanning/default-setup -f state=configured
   ```
-- [ ] Confirm the first CodeQL run completes (**Actions** tab or **Security → Code scanning**).
+- [x] Confirm the first CodeQL run completes (**Actions** tab or **Security → Code scanning**).
 
 **Done when:** the Security tab shows CodeQL scanning `javascript-typescript` with no open alerts (or alerts reported to me).
 
@@ -309,9 +309,9 @@ The repo already exists (`main`, remote `origin` → `https://github.com/carlinn
 
 ## Phase 10 — Repo docs
 
-- [ ] Check that `README.md` and `SECURITY.md` match what was actually built (stack, scripts, CSP, workflow). Report any mismatch to me instead of rewriting them.
-- [ ] Add a `LICENSE` file with the MIT license text (`Copyright (c) 2026 Carlin Verano`) to match the README's license section.
-- [ ] Add repo description, website URL, and topics on GitHub:
+- [x] Check that `README.md` and `SECURITY.md` match what was actually built (stack, scripts, CSP, workflow). Report any mismatch to me instead of rewriting them.
+- [x] Add a `LICENSE` file with the MIT license text (`Copyright (c) 2026 Carlin Verano`) to match the README's license section.
+- [x] Add repo description, website URL, and topics on GitHub:
   ```bash
   gh repo edit --description "[description]" --homepage "https://carlinnv.github.io/Portfolio/" --add-topic portfolio,react,typescript,vite,cybersecurity
   ```
