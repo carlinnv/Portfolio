@@ -30,10 +30,11 @@ npm run dev       # local dev server
 npm run build     # type-check + production build to dist/
 npm run preview   # serve the production build (use this to test the CSP)
 npm run lint      # ESLint
-npm run format    # Prettier --write
+npm run format        # Prettier --write
+npm run format:check  # Prettier --check (CI runs this; deploy fails if it fails)
 ```
 
-Before saying a task is done: run `npm run lint` and `npm run build` and make sure both pass.
+Before saying a task is done: run `npm run lint`, `npm run format:check`, and `npm run build` and make sure all three pass.
 
 ## Project structure
 
