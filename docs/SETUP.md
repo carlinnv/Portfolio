@@ -268,7 +268,7 @@ The repo already exists (`main`, remote `origin` → `https://github.com/carlinn
 
 ## Phase 8 — Dependabot
 
-- [ ] Create `.github/dependabot.yml`:
+- [x] Create `.github/dependabot.yml`:
   ```yaml
   version: 2
   updates:
@@ -284,7 +284,8 @@ The repo already exists (`main`, remote `origin` → `https://github.com/carlinn
       schedule:
         interval: weekly
   ```
-- [ ] Enable Dependabot alerts and security updates — **Settings → Code security**, or:
+  > **Done, with additions:** a 7-day `cooldown` on version updates (supply-chain hardening; security updates are not delayed) and an `ignore` rule holding TypeScript below 6.1 until typescript-eslint supports it. `.github/dependabot.yml` is the source of truth.
+- [x] Enable Dependabot alerts and security updates — **Settings → Code security**, or:
   ```bash
   gh api -X PUT repos/carlinnv/Portfolio/vulnerability-alerts
   gh api -X PUT repos/carlinnv/Portfolio/automated-security-fixes
