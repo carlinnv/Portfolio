@@ -48,13 +48,16 @@ GitHub Pages does not allow custom HTTP response headers, so the CSP is delivere
 
 ### Supply chain
 
-- **Dependabot** checks npm packages and GitHub Actions weekly and opens PRs for updates and security fixes.
-- **CodeQL** default setup scans JavaScript/TypeScript on every push and pull request.
+- **Dependabot** checks npm packages and GitHub Actions weekly and opens PRs for updates. Version updates wait 7 days after a release (a cooldown), so malicious or broken releases are usually caught before they are proposed. Security updates are opened right away.
+- **CodeQL** default setup scans the JavaScript/TypeScript code and the GitHub Actions workflows on every push and pull request to `main`, and weekly.
+- **Secret scanning with push protection** is enabled, so a pushed API key or token is blocked before it reaches the repository.
 - `package-lock.json` is committed and CI installs with `npm ci` for reproducible builds.
 - Dependencies are kept to a minimum.
 
 ### CI/CD
 
-- The deploy workflow uses least-privilege `permissions` (`contents: read`, `pages: write`, `id-token: write`).
-- Lint and formatting checks must pass before deployment.
+- **Pull request checks:** a CI workflow runs lint, format check, type-check, and build on every pull request, including Dependabot's. It has read-only permissions (`contents: read`) and never deploys.
+- **Deployment:** the deploy workflow runs the same checks on every push to `main`, then publishes to GitHub Pages. It uses least-privilege `permissions` (`contents: read`, `pages: write`, `id-token: write`).
+- **Workflow hardening:** checkout does not leave the GitHub token on disk (`persist-credentials: false`), and no dependency cache is used, to avoid cache poisoning in a publishing workflow.
+- **Protected `main` branch:** a repository ruleset blocks force pushes and branch deletion, requires the CI check to pass before merging, and blocks merges that introduce CodeQL alerts of high severity or above.
 - No secrets are stored in the repository or required by the build.
