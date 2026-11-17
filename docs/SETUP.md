@@ -260,7 +260,7 @@ The repo already exists (`main`, remote `origin` → `https://github.com/carlinn
   gh api -X POST repos/carlinnv/Portfolio/pages -f build_type=workflow
   ```
   > **Done:** Pages was already enabled in legacy (branch) mode, so it was switched with `gh api -X PUT repos/carlinnv/Portfolio/pages -f build_type=workflow`.
-- [ ] **⏸ CHECKPOINT:** ask me to commit and push, then confirm the workflow run succeeds (`gh run watch` or the Actions tab).
+- [x] **⏸ CHECKPOINT:** ask me to commit and push, then confirm the workflow run succeeds (`gh run watch` or the Actions tab).
 
 **Done when:** the site loads at the live URL with styles, fonts, and images working.
 
