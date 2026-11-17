@@ -1,0 +1,36 @@
+/* Page layout: sidebar on the left, card column on the right. */
+
+.layout {
+  display: grid;
+  gap: var(--space-6);
+  max-width: calc(var(--sidebar-width) + var(--content-width) + var(--space-6));
+  margin: 0 auto;
+  padding: var(--page-padding-top) var(--space-4) var(--space-6);
+}
+
+.main {
+  display: grid;
+  gap: var(--window-gap);
+  min-width: 0;
+}
+
+/* Wide screens: two columns. */
+@media (min-width: 56rem) {
+  .layout {
+    grid-template-columns: var(--sidebar-width) minmax(0, var(--content-width));
+    align-items: start;
+  }
+
+  .footer {
+    grid-column: 2;
+  }
+}
+
+/* Keep the sidebar in view while scrolling, only when the screen is tall
+   enough to show all of it. */
+@media (min-width: 56rem) and (min-height: 46rem) {
+  .sidebar {
+    position: sticky;
+    top: var(--page-padding-top);
+  }
+}

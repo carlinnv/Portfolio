@@ -1,0 +1,59 @@
+/*
+ * DESIGN TOKENS: the one place to change the site's colors, fonts, and sizes.
+ *
+ * Every other stylesheet uses these variables instead of raw values, so a
+ * change here updates the whole site.
+ *
+ * Accessibility: if you change a text color or the background behind it,
+ * check the contrast (e.g. https://webaim.org/resources/contrastchecker/).
+ * Body text needs at least 4.5:1. The ratios noted below are for the
+ * current values.
+ */
+:root {
+  /* ---------- Backgrounds ---------- */
+  --color-page: #faf3e8; /* warm cream page background */
+  --color-surface: #ffffff; /* inside of cards */
+  --color-titlebar: #cdd8c4; /* card title bars (pale sage) */
+  --color-tag: #e3edf0; /* skill/technology tag background (pale blue) */
+  --color-highlight: #fbd3bd; /* peach: text selection */
+
+  /* ---------- Text ---------- */
+  --color-text: #33504d; /* body text: 7.95:1 on page, 8.77:1 on cards */
+  --color-heading: #2f6461; /* headings: 6.11:1 on page, 6.74:1 on cards */
+  --color-titlebar-text: #1f3533; /* card titles on the sage bar: 8.8:1 */
+  --color-muted: #4f6b68; /* dates and captions: 5.24:1 on page */
+  --color-link: #8a3f2c; /* links: 6.74:1 on page, 7.43:1 on cards */
+  --color-link-hover: #2f6461; /* links on hover */
+
+  /* ---------- Lines and effects ---------- */
+  --color-border: #5f7f7b; /* card and image outlines */
+  --color-shadow: #e3b9a5; /* solid offset "pixel" shadow behind cards */
+  --color-rule: #cdd8c4; /* dashed dividers between entries */
+  --color-focus: #8a3f2c; /* keyboard focus outline */
+
+  /* ---------- Fonts ---------- */
+  /* Headings, labels, and nav: retro monospace. */
+  --font-display:
+    'Share Tech Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  /* Body text: rounded but readable sans-serif. */
+  --font-body:
+    'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-size-base: 1.0625rem; /* 17px */
+  --font-size-small: 0.9375rem; /* 15px */
+
+  /* ---------- Spacing and sizes ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+
+  --page-padding-top: 3.5rem; /* space above the profile photo and first window */
+  --window-gap: 2.75rem; /* vertical space between windows */
+
+  --border-width: 2px; /* card and image outline thickness */
+  --shadow-offset: 4px; /* how far the pixel shadow sits from each card */
+  --sidebar-width: 17rem;
+  --content-width: 44rem; /* max width of the card column */
+}

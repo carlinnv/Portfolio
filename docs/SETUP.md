@@ -2,14 +2,14 @@
 
 Step-by-step setup for the portfolio repo. Claude: work through the phases in order, check off each box as it is done, and stop at any **⏸ CHECKPOINT** to confirm with me before continuing.
 
-| Setting         | Value                                                                                                  |
-| --------------- | ------------------------------------------------------------------------------------------------------ |
-| GitHub username | `carlinnv`                                                                                             |
-| Repo name       | `Portfolio`                                                                                            |
-| Site URL        | https://carlinnv.github.io/Portfolio/                                                                  |
-| Vite `base`     | `/Portfolio/` (case-sensitive: must match the repo name exactly)                                       |
-| Design example  | `template/Pixelution.html` (visual reference only: no code may be reused; local only, never committed) |
-| Fonts           | Ubuntu Mono (`@fontsource/ubuntu-mono`), Source Sans 3 (`@fontsource/source-sans-3`)                   |
+| Setting         | Value                                                                                                                      |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| GitHub username | `carlinnv`                                                                                                                 |
+| Repo name       | `Portfolio`                                                                                                                |
+| Site URL        | https://carlinnv.github.io/Portfolio/                                                                                      |
+| Vite `base`     | `/Portfolio/` (case-sensitive: must match the repo name exactly)                                                           |
+| Design example  | `template/Pixelution.html` (visual reference only: no code may be reused; local only, never committed)                     |
+| Fonts           | Share Tech Mono (`@fontsource/share-tech-mono`) for headings, labels, and nav; Nunito (`@fontsource/nunito`) for body text |
 
 ---
 
@@ -116,12 +116,12 @@ The project lives at the repo root. The old `frontend/` scaffold has been delete
 
 The template's creator does not allow their code to be used as base code. Look at `template/Pixelution.html` for the general look and feel only. **Do not copy, port, or adapt its HTML, CSS, JavaScript, icons, or images.** Write all markup and styles from scratch.
 
-- [ ] Look at the template and describe its overall style in your own words: layout (e.g. sidebar vs. top nav, column widths), color palette, typography, spacing, and mood. **⏸ CHECKPOINT:** show me that description plus a proposed section and component breakdown for _my_ portfolio (e.g. Header, About, Education, Projects, Experience, Contact) before writing components.
-- [ ] Write original CSS in `src/styles/` (design tokens such as colors and spacing as CSS custom properties) and import it in `main.tsx`.
-- [ ] Create one component per section in `src/components/`.
-- [ ] Put text content in typed data files in `src/content/` (e.g. `projects.ts`, `experience.ts`) with placeholder content I can fill in.
-- [ ] Add a "Skip to main content" link and make sure the landmark structure (`header`/`nav`/`main`/`footer`) follows `CLAUDE.md`.
-- [ ] Any interactivity (e.g. a mobile menu toggle) is written fresh with React state, not adapted from the template's scripts.
+- [x] Look at the template and describe its overall style in your own words: layout (e.g. sidebar vs. top nav, column widths), color palette, typography, spacing, and mood. **⏸ CHECKPOINT:** show me that description plus a proposed section and component breakdown for _my_ portfolio (e.g. Header, About, Education, Projects, Experience, Contact) before writing components.
+- [x] Write original CSS in `src/styles/` (design tokens such as colors and spacing as CSS custom properties) and import it in `main.tsx`.
+- [x] Create one component per section in `src/components/`.
+- [x] Put text content in typed data files in `src/content/` (e.g. `projects.ts`, `experience.ts`) with placeholder content I can fill in.
+- [x] Add a "Skip to main content" link and make sure the landmark structure (`header`/`nav`/`main`/`footer`) follows `CLAUDE.md`.
+- [x] Any interactivity (e.g. a mobile menu toggle) is written fresh with React state, not adapted from the template's scripts.
 
 **Done when:** the site has a similar general feel to the template but is built entirely from original code, the whole page works with keyboard only, and lint/build pass.
 
@@ -131,10 +131,10 @@ The template's creator does not allow their code to be used as base code. Look a
 
 - [ ] Self-host the fonts (both are open-source and free to use; only the template's code is off-limits):
   ```bash
-  npm install @fontsource/ubuntu-mono @fontsource/source-sans-3
+  npm install @fontsource/share-tech-mono @fontsource/nunito
   ```
-  and import them (plus any needed weights) in `main.tsx`, e.g. `import '@fontsource/ubuntu-mono'`.
-- [ ] Icons: do not use the template's icons (Flaticon uicons). Use simple hand-written SVGs in `src/assets/`, or ask me before adding an icon package.
+  and import them (plus any needed weights) in `main.tsx`, e.g. `import '@fontsource/share-tech-mono'`.
+- [x] Icons: do not use the template's icons (Flaticon uicons). Done in Phase 3: hand-drawn pixel icons live in `src/components/Icon.tsx` (no icon package).
 - [ ] Do **not** add Google Analytics or any other analytics/tracking.
 - [ ] Search `src/`, `index.html`, and `public/` for external resource URLs (`http`, `//fonts.`, `cdn`, `googletagmanager`, `analytics`, etc.). **⏸ CHECKPOINT:** show me anything found.
 

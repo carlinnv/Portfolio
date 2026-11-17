@@ -1,0 +1,49 @@
+/* Printing: plain, ink-friendly, one column, with link URLs written out. */
+
+@media print {
+  :root {
+    --color-page: #ffffff;
+    --color-titlebar: #ffffff;
+    --color-tag: #ffffff;
+  }
+
+  body {
+    font-size: 11pt;
+  }
+
+  .skip-link,
+  .sidebar__nav,
+  .card__controls,
+  .sidebar .contact-links {
+    display: none;
+  }
+
+  .layout {
+    display: block;
+    max-width: none;
+    padding: 0;
+  }
+
+  .main {
+    display: block;
+  }
+
+  .card {
+    margin-bottom: 1.5rem;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .sidebar__photo {
+    width: 6rem;
+    box-shadow: none;
+  }
+
+  /* Show where external links go, since they can't be clicked on paper. */
+  .card a[href^='http']::after,
+  .card a[href^='mailto:']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.85em;
+    overflow-wrap: anywhere;
+  }
+}
