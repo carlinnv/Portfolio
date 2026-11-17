@@ -1,9 +1,8 @@
 import { education } from '../content/education.ts'
-import { Card } from './Card.tsx'
 
 export function Education() {
   return (
-    <Card id="education" title="Education">
+    <>
       <ul className="entries">
         {education.map((entry) => (
           <li key={`${entry.school}-${entry.degree}`} className="entry">
@@ -21,6 +20,6 @@ export function Education() {
           </li>
         ))}
       </ul>
-    </Card>
+    </>
   )
 }

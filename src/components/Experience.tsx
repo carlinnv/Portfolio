@@ -1,9 +1,8 @@
 import { experience } from '../content/experience.ts'
-import { Card } from './Card.tsx'
 
 export function Experience() {
   return (
-    <Card id="experience" title="Experience">
+    <>
       <ul className="entries">
         {experience.map((entry, index) => (
           <li key={`${entry.role}-${index}`} className="entry">
@@ -19,6 +18,6 @@ export function Experience() {
           </li>
         ))}
       </ul>
-    </Card>
+    </>
   )
 }

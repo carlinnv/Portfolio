@@ -8,6 +8,7 @@ import { Projects } from './components/Projects.tsx'
 import { Sidebar } from './components/Sidebar.tsx'
 import { Skills } from './components/Skills.tsx'
 import { SkipLink } from './components/SkipLink.tsx'
+import { TabbedWindow } from './components/TabbedWindow.tsx'
 
 export function App() {
   return (
@@ -17,13 +18,17 @@ export function App() {
         <Sidebar />
         {/* tabIndex lets the skip link move keyboard focus here in all browsers. */}
         <main id="main-content" className="main" tabIndex={-1}>
-          <About />
-          <Education />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Moments />
-          <Contact />
+          <TabbedWindow
+            panels={{
+              about: <About />,
+              education: <Education />,
+              experience: <Experience />,
+              projects: <Projects />,
+              skills: <Skills />,
+              moments: <Moments />,
+              contact: <Contact />,
+            }}
+          />
         </main>
         <Footer />
       </div>

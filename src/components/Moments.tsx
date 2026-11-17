@@ -1,9 +1,8 @@
 import { moments } from '../content/moments.ts'
-import { Card } from './Card.tsx'
 
 export function Moments() {
   return (
-    <Card id="moments" title="Moments">
+    <>
       <p>A few things from outside work and school.</p>
       <ul className="moments">
         {moments.map((moment, index) => (
@@ -27,6 +26,6 @@ export function Moments() {
           </li>
         ))}
       </ul>
-    </Card>
+    </>
   )
 }

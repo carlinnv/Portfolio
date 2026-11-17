@@ -1,7 +1,10 @@
 import type { SectionLink } from './types.ts'
 
-/** Sidebar navigation. Each `id` must match a section's `id`. */
-export const sections: SectionLink[] = [
+/**
+ * The tabs in the main window, in order. Also used by the sidebar menu.
+ * Each `id` is used in the URL (e.g. /Portfolio/#projects).
+ */
+export const sections = [
   { id: 'about', label: 'About' },
   { id: 'education', label: 'Education' },
   { id: 'experience', label: 'Experience' },
@@ -9,4 +12,6 @@ export const sections: SectionLink[] = [
   { id: 'skills', label: 'Skills' },
   { id: 'moments', label: 'Moments' },
   { id: 'contact', label: 'Contact' },
-]
+] as const satisfies readonly SectionLink[]
+
+export type SectionId = (typeof sections)[number]['id']

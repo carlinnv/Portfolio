@@ -1,9 +1,8 @@
 import { projects } from '../content/projects.ts'
-import { Card } from './Card.tsx'
 
 export function Projects() {
   return (
-    <Card id="projects" title="Projects">
+    <>
       <ul className="entries">
         {projects.map((project, index) => (
           <li key={`${project.title}-${index}`} className="entry">
@@ -28,6 +27,6 @@ export function Projects() {
           </li>
         ))}
       </ul>
-    </Card>
+    </>
   )
 }

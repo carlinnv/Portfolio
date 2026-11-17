@@ -1,4 +1,5 @@
-/* Printing: plain, ink-friendly, one column, with link URLs written out. */
+/* Printing: plain, ink-friendly, one column, every tab printed in order,
+   with link URLs written out. */
 
 @media print {
   :root {
@@ -12,9 +13,9 @@
   }
 
   .skip-link,
-  .sidebar__nav,
-  .card__controls,
-  .sidebar .contact-links {
+  .menu,
+  .tabs,
+  .tab-window > .card__titlebar {
     display: none;
   }
 
@@ -31,6 +32,36 @@
   .card {
     margin-bottom: 1.5rem;
     box-shadow: none;
+  }
+
+  /* The tabbed window is printed as one long document, not one window. */
+  .tab-window {
+    border: none;
+  }
+
+  /* Print every tab, not just the selected one. */
+  .tabs__panel[hidden] {
+    display: block;
+  }
+
+  .tabs__panel {
+    min-height: 0;
+    padding: 0 0 1.5rem;
+  }
+
+  /* Show each section's heading on paper. */
+  .tabs__heading {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+    margin-bottom: 0.5rem;
+  }
+
+  .entry,
+  .moments li {
     break-inside: avoid;
   }
 

@@ -24,6 +24,12 @@
     align-items: start;
   }
 
+  /* The sidebar spans both rows, so opening the menu doesn't push the
+     footer down. */
+  .sidebar {
+    grid-row: span 2;
+  }
+
   .footer {
     grid-column: 2;
   }
