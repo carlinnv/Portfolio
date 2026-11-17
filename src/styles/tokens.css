@@ -32,7 +32,11 @@
   --color-focus: #8a3f2c; /* keyboard focus outline */
 
   /* ---------- Fonts ---------- */
-  /* Headings, labels, and nav: retro monospace. */
+  /* Your name and window titles: soft pixel font. */
+  --font-heading:
+    'Pixelify Sans', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  --font-heading-weight: 500;
+  /* Menu links, tags, dates, and entry titles: retro monospace. */
   --font-display:
     'Share Tech Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
   /* Body text: rounded but readable sans-serif. */

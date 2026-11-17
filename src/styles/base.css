@@ -30,6 +30,13 @@ h3 {
   line-height: 1.2;
 }
 
+/* Your name and window titles use the pixel heading font. */
+h1,
+h2 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+}
+
 h1 {
   font-size: 2rem;
 }

@@ -2,14 +2,14 @@
 
 Step-by-step setup for the portfolio repo. Claude: work through the phases in order, check off each box as it is done, and stop at any **⏸ CHECKPOINT** to confirm with me before continuing.
 
-| Setting         | Value                                                                                                                      |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| GitHub username | `carlinnv`                                                                                                                 |
-| Repo name       | `Portfolio`                                                                                                                |
-| Site URL        | https://carlinnv.github.io/Portfolio/                                                                                      |
-| Vite `base`     | `/Portfolio/` (case-sensitive: must match the repo name exactly)                                                           |
-| Design example  | `template/Pixelution.html` (visual reference only: no code may be reused; local only, never committed)                     |
-| Fonts           | Share Tech Mono (`@fontsource/share-tech-mono`) for headings, labels, and nav; Nunito (`@fontsource/nunito`) for body text |
+| Setting         | Value                                                                                                                                                                                                                               |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GitHub username | `carlinnv`                                                                                                                                                                                                                          |
+| Repo name       | `Portfolio`                                                                                                                                                                                                                         |
+| Site URL        | https://carlinnv.github.io/Portfolio/                                                                                                                                                                                               |
+| Vite `base`     | `/Portfolio/` (case-sensitive: must match the repo name exactly)                                                                                                                                                                    |
+| Design example  | `template/Pixelution.html` (visual reference only: no code may be reused; local only, never committed)                                                                                                                              |
+| Fonts           | Pixelify Sans (`@fontsource/pixelify-sans`, weight 500) for your name and window titles; Share Tech Mono (`@fontsource/share-tech-mono`) for menu links, tags, dates, and entry titles; Nunito (`@fontsource/nunito`) for body text |
 
 ---
 
@@ -129,14 +129,14 @@ The template's creator does not allow their code to be used as base code. Look a
 
 ## Phase 4 — Self-hosted fonts, no third-party requests (no analytics)
 
-- [ ] Self-host the fonts (both are open-source and free to use; only the template's code is off-limits):
+- [x] Self-host the fonts (both are open-source and free to use; only the template's code is off-limits):
   ```bash
   npm install @fontsource/share-tech-mono @fontsource/nunito
   ```
   and import them (plus any needed weights) in `main.tsx`, e.g. `import '@fontsource/share-tech-mono'`.
 - [x] Icons: do not use the template's icons (Flaticon uicons). Done in Phase 3: hand-drawn pixel icons live in `src/components/Icon.tsx` (no icon package).
-- [ ] Do **not** add Google Analytics or any other analytics/tracking.
-- [ ] Search `src/`, `index.html`, and `public/` for external resource URLs (`http`, `//fonts.`, `cdn`, `googletagmanager`, `analytics`, etc.). **⏸ CHECKPOINT:** show me anything found.
+- [x] Do **not** add Google Analytics or any other analytics/tracking.
+- [x] Search `src/`, `index.html`, and `public/` for external resource URLs (`http`, `//fonts.`, `cdn`, `googletagmanager`, `analytics`, etc.). **⏸ CHECKPOINT:** show me anything found.
 
 **Done when:** that search finds no external resource URLs (outbound `<a href>` links to GitHub/LinkedIn are fine).
 
