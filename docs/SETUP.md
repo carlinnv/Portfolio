@@ -209,7 +209,7 @@ The repo already exists (`main`, remote `origin` → `https://github.com/carlinn
 
 ## Phase 7 — Deploy workflow (GitHub Actions → Pages)
 
-- [ ] Create `.github/workflows/deploy.yml`:
+- [x] Create `.github/workflows/deploy.yml`:
   ```yaml
   name: Deploy to GitHub Pages
 
@@ -254,10 +254,12 @@ The repo already exists (`main`, remote `origin` → `https://github.com/carlinn
         - id: deployment
           uses: actions/deploy-pages@v4
   ```
-- [ ] Set Pages source to GitHub Actions — either **Settings → Pages → Source → GitHub Actions**, or:
+  > **Done, with changes:** the committed workflow uses the current major versions (`checkout@v7`, `setup-node@v7`, `upload-pages-artifact@v5`, `deploy-pages@v5`), sets `persist-credentials: false` on checkout, and drops `cache: npm` to avoid cache poisoning in a publishing workflow. `.github/workflows/deploy.yml` is the source of truth.
+- [x] Set Pages source to GitHub Actions — either **Settings → Pages → Source → GitHub Actions**, or:
   ```bash
   gh api -X POST repos/carlinnv/Portfolio/pages -f build_type=workflow
   ```
+  > **Done:** Pages was already enabled in legacy (branch) mode, so it was switched with `gh api -X PUT repos/carlinnv/Portfolio/pages -f build_type=workflow`.
 - [ ] **⏸ CHECKPOINT:** ask me to commit and push, then confirm the workflow run succeeds (`gh run watch` or the Actions tab).
 
 **Done when:** the site loads at the live URL with styles, fonts, and images working.
