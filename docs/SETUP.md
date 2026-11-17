@@ -196,13 +196,13 @@ The template's creator does not allow their code to be used as base code. Look a
 
 The repo already exists (`main`, remote `origin` → `https://github.com/carlinnv/Portfolio.git`). Do not run `git init` or `gh repo create`. Claude does not commit (see `CLAUDE.md`); I make the commits.
 
-- [ ] Confirm the root `.gitignore` from Phase 1 is still in place and unchanged.
-- [ ] Stop tracking files that were committed before the `.gitignore` existed, and stage removal of the old scaffold:
+- [x] Confirm the root `.gitignore` from Phase 1 is still in place and unchanged.
+- [x] Stop tracking files that were committed before the `.gitignore` existed, and stage removal of the old scaffold:
   ```bash
   git rm --cached .DS_Store
   git rm -r --cached frontend
   ```
-- [ ] Run `git status` and confirm nothing under `template/`, `node_modules/`, `dist/`, or any `.env` file is listed.
+- [x] Run `git status` and confirm nothing under `template/`, `node_modules/`, `dist/`, or any `.env` file is listed.
 - [ ] **⏸ CHECKPOINT:** show me `git status`. I will commit and push.
 
 ---
