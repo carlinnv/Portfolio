@@ -1,6 +1,8 @@
 import { profile } from '../content/profile.ts'
 import { sections } from '../content/sections.ts'
 import { ContactLinks } from './ContactLinks.tsx'
+import { Icon } from './Icon.tsx'
+import { ThemeToggle } from './ThemeToggle.tsx'
 
 export function Sidebar() {
   return (
@@ -19,6 +21,13 @@ export function Sidebar() {
           <details> is built into browsers: it works with mouse, keyboard
           (Enter/Space), and screen readers without any JavaScript. */}
       <nav className="sidebar__nav" aria-label="Sections">
+        {/* Decorative village-game style items resting on top of the menu,
+            like on a shelf. Hidden from screen readers: no information. */}
+        <div className="sidebar__icons" aria-hidden="true">
+          <Icon name="leaf" className="icon--leaf" />
+          <Icon name="bag" className="icon--bag" />
+          <Icon name="radish" className="icon--radish" />
+        </div>
         <details className="card card--compact menu">
           <summary className="card__titlebar menu__toggle">
             <span className="card__title">Menu</span>
@@ -35,6 +44,7 @@ export function Sidebar() {
       </nav>
 
       <ContactLinks />
+      <ThemeToggle />
     </header>
   )
 }

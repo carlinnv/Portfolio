@@ -1,7 +1,9 @@
 /*
  * Hand-drawn pixel-art icons on a 16×16 grid.
- * Each string is one row of pixels: '#' is filled, '.' is empty.
- * To edit an icon, change the '#'s; every row must stay 16 characters long.
+ * Each string is one row of pixels: '#' is the main color, '+' is a second
+ * (accent) color, '.' is empty. Every row must stay 16 characters long.
+ * Colors come from CSS: the main color is `color`, the accent is
+ * `--icon-accent` (see components.css).
  */
 const ICONS = {
   email: [
@@ -76,22 +78,116 @@ const ICONS = {
     '..############..',
     '................',
   ],
+  moon: [
+    '................',
+    '................',
+    '.....##.........',
+    '...###..........',
+    '..####..........',
+    '..####..........',
+    '.#####..........',
+    '.#####..........',
+    '.#####..........',
+    '.######.........',
+    '.#######........',
+    '..###########...',
+    '..###########...',
+    '...#########....',
+    '.....#####......',
+    '................',
+  ],
+  sun: [
+    '................',
+    '.......##.......',
+    '.......##.......',
+    '..#..........#..',
+    '...#........#...',
+    '......####......',
+    '.....######.....',
+    '.##..######..##.',
+    '.##..######..##.',
+    '.....######.....',
+    '......####......',
+    '...#........#...',
+    '..#..........#..',
+    '.......##.......',
+    '.......##.......',
+    '................',
+  ],
+  // Decorative village-game style icons (shown above the sidebar menu).
+  leaf: [
+    '................',
+    '..........####..',
+    '........######..',
+    '......########..',
+    '.....#########..',
+    '....##########..',
+    '...########.##..',
+    '...#######.###..',
+    '..#######.####..',
+    '..######.####...',
+    '..#####.####....',
+    '..####.####.....',
+    '...#.#####......',
+    '..#...###.......',
+    '.#..............',
+    '#...............',
+  ],
+  // Money bag with a star ('+' = star)
+  bag: [
+    '................',
+    '.....##..##.....',
+    '......####......',
+    '.......##.......',
+    '......####......',
+    '.....######.....',
+    '....########....',
+    '...##########...',
+    '..############..',
+    '..#####++#####..',
+    '.######++######.',
+    '.###++++++++###.',
+    '.####++++++####.',
+    '.#####++++#####.',
+    '..####+##+####..',
+    '...##########...',
+  ],
+  // Radish ('+' = leaves)
+  radish: [
+    '....++....++....',
+    '...++++..++++...',
+    '...++++..++++...',
+    '....+++..+++....',
+    '.....++++++.....',
+    '......++++......',
+    '.....######.....',
+    '...##########...',
+    '..############..',
+    '..############..',
+    '..############..',
+    '...##########...',
+    '....########....',
+    '.....######.....',
+    '.......##.......',
+    '.......#........',
+  ],
 } as const satisfies Record<string, readonly string[]>
 
 export type IconName = keyof typeof ICONS
 
-/** Turns a pixel grid into one SVG path: a 1px-tall rectangle per run of '#'. */
-const toPath = (rows: readonly string[]): string => {
+/** Turns one color of a pixel grid into an SVG path: a 1px-tall rectangle
+    per run of that character. */
+const toPath = (rows: readonly string[], pixel: '#' | '+'): string => {
   let d = ''
   rows.forEach((row, y) => {
     let x = 0
     while (x < row.length) {
-      if (row[x] !== '#') {
+      if (row[x] !== pixel) {
         x += 1
         continue
       }
       let width = 0
-      while (row[x + width] === '#') width += 1
+      while (row[x + width] === pixel) width += 1
       d += `M${x} ${y}h${width}v1h-${width}z`
       x += width
     }
@@ -100,23 +196,31 @@ const toPath = (rows: readonly string[]): string => {
 }
 
 const PATHS = Object.fromEntries(
-  Object.entries(ICONS).map(([name, rows]) => [name, toPath(rows)]),
-) as Record<IconName, string>
+  Object.entries(ICONS).map(([name, rows]) => [
+    name,
+    { main: toPath(rows, '#'), accent: toPath(rows, '+') },
+  ]),
+) as Record<IconName, { main: string; accent: string }>
 
 interface IconProps {
   name: IconName
+  /** Extra class, e.g. to give the icon its own color. */
+  className?: string
 }
 
 /** Decorative icon: always pair it with visible text. */
-export function Icon({ name }: IconProps) {
+export function Icon({ name, className }: IconProps) {
   return (
     <svg
-      className="icon"
+      className={className ? `icon ${className}` : 'icon'}
       viewBox="0 0 16 16"
       aria-hidden="true"
       focusable="false"
     >
-      <path d={PATHS[name]} />
+      <path d={PATHS[name].main} />
+      {PATHS[name].accent && (
+        <path className="icon__accent" d={PATHS[name].accent} />
+      )}
     </svg>
   )
 }

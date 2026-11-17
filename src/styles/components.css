@@ -93,6 +93,40 @@
   margin: var(--space-5) 0;
 }
 
+/* Decorative items grouped at the right end of the menu, resting on its top
+   edge like things on a shelf (each icon's pixels touch its bottom edge). */
+.sidebar__icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: var(--space-1);
+  padding-right: var(--space-3);
+}
+
+.sidebar__icons .icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+/* Two-color icons: the second color ('+' pixels in Icon.tsx). */
+.icon__accent {
+  fill: var(--icon-accent, currentColor);
+}
+
+.icon--leaf {
+  color: var(--color-icon-leaf);
+}
+
+.icon--bag {
+  color: var(--color-icon-bag);
+  --icon-accent: var(--color-icon-bag-star);
+}
+
+.icon--radish {
+  color: var(--color-icon-radish);
+  --icon-accent: var(--color-icon-radish-leaves);
+}
+
 /* ---------- Menu dropdown ---------- */
 
 /* The title bar is the button that opens and closes the menu. */
@@ -208,6 +242,33 @@
   padding: var(--space-1) 0;
 }
 
+/* ---------- Dark mode button (crescent) ---------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding: var(--space-1) var(--space-3);
+  color: var(--color-titlebar-text);
+  background: var(--color-titlebar);
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: 2px 2px 0 var(--color-border);
+  font-family: var(--font-display);
+  font-size: var(--font-size-small);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: var(--color-menu-hover);
+}
+
+/* Presses in when clicked. */
+.theme-toggle:active {
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
 .card .contact-links {
   margin-top: var(--space-4);
 }
@@ -279,13 +340,69 @@
   margin-top: var(--space-4);
 }
 
-/* Let phones scroll the page vertically, but leave sideways swipes to us. */
+/* The photos sit in a stack (all in the same grid cell), so the old photo
+   can flip away on top of the new one. */
 .carousel__slides {
-  touch-action: pan-y;
+  display: grid;
+  overflow: clip; /* keep the flipping photo inside the window */
+  perspective: 1200px; /* gives the flip some 3D depth */
+  touch-action: pan-y; /* phones scroll vertically; sideways swipes are ours */
 }
 
 .carousel__slide {
+  grid-area: 1 / 1;
   margin: 0;
+  background: var(--color-surface); /* hides the photo underneath */
+}
+
+/* The photo being flicked away rides on top and can't be clicked. */
+.carousel__slide--leaving {
+  z-index: 1;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+}
+
+/* 0.5s, matching FLIP_MS in Moments.tsx. Never with reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .carousel__slide--leaving-next {
+    animation: carousel-flip-next 0.5s ease-in forwards;
+  }
+
+  .carousel__slide--leaving-prev {
+    animation: carousel-flip-prev 0.5s ease-in forwards;
+  }
+
+  /* The next photo settles up from the pile as the old one leaves. */
+  .carousel__slides--moved
+    .carousel__slide:not([hidden]):not(.carousel__slide--leaving) {
+    animation: carousel-settle 0.5s ease-out;
+  }
+}
+
+/* Next: the photo tilts and flips off to the left. */
+@keyframes carousel-flip-next {
+  to {
+    opacity: 0;
+    transform: translateX(-45%) translateY(-6%) rotate(-12deg) rotateY(35deg);
+  }
+}
+
+/* Previous: the same, off to the right. */
+@keyframes carousel-flip-prev {
+  to {
+    opacity: 0;
+    transform: translateX(45%) translateY(-6%) rotate(12deg) rotateY(-35deg);
+  }
+}
+
+@keyframes carousel-settle {
+  from {
+    transform: scale(0.96);
+  }
+
+  to {
+    transform: none;
+  }
 }
 
 .carousel__slide img {

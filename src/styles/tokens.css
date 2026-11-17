@@ -4,33 +4,48 @@
  * Every other stylesheet uses these variables instead of raw values, so a
  * change here updates the whole site.
  *
+ * Palette (cozy village-game inspired): mint #74e0aa, leaf green #bee893,
+ * butter #fbfeb2, sand #dbbf9e, sage #c4d9a9, softened toward pastel yellow,
+ * blue-green, and pink. These pastels are used for
+ * backgrounds and accents; text uses deeper shades of the same hues so it
+ * stays readable.
+ *
  * Accessibility: if you change a text color or the background behind it,
  * check the contrast (e.g. https://webaim.org/resources/contrastchecker/).
  * Body text needs at least 4.5:1. The ratios noted below are for the
  * current values.
  */
 :root {
+  color-scheme: light; /* tells the browser to draw light scrollbars, etc. */
+
   /* ---------- Backgrounds ---------- */
-  --color-page: #faf3e8; /* warm cream page background */
-  --color-surface: #ffffff; /* inside of cards */
-  --color-titlebar: #cdd8c4; /* card title bars (pale sage) */
-  --color-tag: #e3edf0; /* skill/technology tag background (pale blue) */
-  --color-highlight: #fbd3bd; /* peach: text selection */
-  --color-menu-hover: #eef3ea; /* menu title bar and rows on hover */
+  --color-page: #fdfbd6; /* soft pastel yellow page background */
+  --color-surface: #e4f6ef; /* inside of windows (light blue-green) */
+  --color-titlebar: #a6dfd0; /* window title bars (darker blue-green) */
+  --color-tag: #b9f0d4; /* skill/technology tags (light mint): text 8.4:1 */
+  --color-highlight: #f8c8d6; /* text selection (pink) */
+  --color-menu-hover: #eaf7f1; /* menu title bar and rows on hover */
 
   /* ---------- Text ---------- */
-  --color-text: #33504d; /* body text: 7.95:1 on page, 8.77:1 on cards */
-  --color-heading: #2f6461; /* headings: 6.11:1 on page, 6.74:1 on cards */
-  --color-titlebar-text: #1f3533; /* card titles on the sage bar: 8.8:1 */
-  --color-muted: #4f6b68; /* dates and captions: 5.24:1 on page */
-  --color-link: #8a3f2c; /* links: 6.74:1 on page, 7.43:1 on cards */
-  --color-link-hover: #2f6461; /* links on hover */
+  --color-text: #4a3b2c; /* warm brown body text: 10.2:1 on page, 9.6:1 on windows */
+  --color-heading: #1f6b47; /* deep green headings: 6.1:1 on page, 5.8:1 on windows */
+  --color-titlebar-text: #173826; /* window titles on the title bar: 8.6:1 */
+  --color-muted: #6b5640; /* dates and captions: 6.6:1 on page, 6.2:1 on windows */
+  --color-link: #9a4a1c; /* rust-brown links: 5.9:1 on page, 5.6:1 on windows */
+  --color-link-hover: #1f6b47; /* links on hover */
 
   /* ---------- Lines and effects ---------- */
-  --color-border: #5f7f7b; /* card and image outlines */
-  --color-shadow: #e3b9a5; /* solid offset "pixel" shadow behind cards */
-  --color-rule: #cdd8c4; /* dashed dividers between entries */
-  --color-focus: #8a3f2c; /* keyboard focus outline */
+  --color-border: #5f8a62; /* window and image outlines: 3.8:1 on page, 3.5:1 on windows */
+  --color-shadow: #f2b5c6; /* solid offset "pixel" shadow behind windows (pink) */
+  --color-rule: #c4d9a9; /* dashed dividers between entries (sage) */
+  --color-focus: #9a4a1c; /* keyboard focus outline */
+
+  /* ---------- Decorative items resting on the menu ---------- */
+  --color-icon-leaf: #3f9f63;
+  --color-icon-bag: #cf9b52; /* money bag (golden) */
+  --color-icon-bag-star: #8f3f17; /* star on the bag */
+  --color-icon-radish: #d4587a; /* radish (pink-red) */
+  --color-icon-radish-leaves: #3f9f63;
 
   /* ---------- Fonts ---------- */
   /* Your name and window titles: soft pixel font. */
@@ -58,8 +73,71 @@
   --window-gap: 2.75rem; /* vertical space between windows */
   --column-gap: 3.5rem; /* space between the sidebar and the windows */
 
-  --border-width: 2px; /* card and image outline thickness */
-  --shadow-offset: 4px; /* how far the pixel shadow sits from each card */
+  --border-width: 2px; /* window and image outline thickness */
+  --shadow-offset: 4px; /* how far the pixel shadow sits from each window */
   --sidebar-width: 17rem;
-  --content-width: 44rem; /* max width of the card column */
+  --content-width: 44rem; /* max width of the window column */
+}
+
+/*
+ * DARK MODE COLORS ("night" version of the palette)
+ *
+ * Used when the visitor's computer is set to dark mode, or when they press
+ * the "Dark mode" button. The SAME colors appear in both blocks below (one
+ * for each case), so if you change a dark color, change it in both.
+ * Screen only: printing always uses the light colors.
+ * Contrast ratios are against the dark page (#1b241e) and windows (#1f2e2b).
+ */
+@media screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --color-page: #1b241e; /* deep forest-night page background */
+    --color-surface: #1f2e2b; /* inside of windows */
+    --color-titlebar: #2c4a45; /* window title bars */
+    --color-tag: #24443a; /* tag background */
+    --color-highlight: #7a4a5a; /* text selection */
+    --color-menu-hover: #263834; /* menu rows on hover */
+    --color-text: #f1efd8; /* body text: 13.7:1 on page, 12.2:1 on windows */
+    --color-heading: #8fe6bb; /* mint headings: 10.8:1 on page, 9.5:1 on windows */
+    --color-titlebar-text: #eefbe6; /* window titles: 9.1:1 on title bar */
+    --color-muted: #c9c0a6; /* dates and captions: 8.8:1 on page */
+    --color-link: #e9c99f; /* sand links: 10.1:1 on page, 8.9:1 on windows */
+    --color-link-hover: #8fe6bb; /* links on hover */
+    --color-border: #7fa685; /* outlines: 5.8:1 on page */
+    --color-shadow: #6b4553; /* pixel shadow behind windows */
+    --color-rule: #3a4a3c; /* dashed dividers */
+    --color-focus: #e9c99f; /* keyboard focus outline */
+    --color-icon-leaf: #8fe6bb;
+    --color-icon-bag: #dbbf9e;
+    --color-icon-bag-star: #9a4a1c;
+    --color-icon-radish: #f08aa4;
+    --color-icon-radish-leaves: #8fe6bb;
+  }
+}
+
+@media screen {
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --color-page: #1b241e;
+    --color-surface: #1f2e2b;
+    --color-titlebar: #2c4a45;
+    --color-tag: #24443a;
+    --color-highlight: #7a4a5a;
+    --color-menu-hover: #263834;
+    --color-text: #f1efd8;
+    --color-heading: #8fe6bb;
+    --color-titlebar-text: #eefbe6;
+    --color-muted: #c9c0a6;
+    --color-link: #e9c99f;
+    --color-link-hover: #8fe6bb;
+    --color-border: #7fa685;
+    --color-shadow: #6b4553;
+    --color-rule: #3a4a3c;
+    --color-focus: #e9c99f;
+    --color-icon-leaf: #8fe6bb;
+    --color-icon-bag: #dbbf9e;
+    --color-icon-bag-star: #9a4a1c;
+    --color-icon-radish: #f08aa4;
+    --color-icon-radish-leaves: #8fe6bb;
+  }
 }

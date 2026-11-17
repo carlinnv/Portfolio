@@ -42,7 +42,9 @@ GitHub Pages does not allow custom HTTP response headers, so the CSP is delivere
 
 ### Privacy
 
-- No analytics, cookies, local storage, or tracking of any kind.
+- No analytics, cookies, or tracking of any kind.
+- The only thing the site stores is the visitor's light/dark mode choice, saved in their own browser's local storage (key `theme`, value `light` or `dark`) and only after they press the button. It is never sent anywhere. Clearing site data removes it.
+- The early theme script (`public/theme-init.js`) is a separate file, not inline, so the Content-Security-Policy can keep blocking all inline scripts.
 - No third-party requests; fonts are self-hosted.
 - Referrer policy: `strict-origin-when-cross-origin`.
 
