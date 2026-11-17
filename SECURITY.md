@@ -23,6 +23,7 @@ form-action 'self'
 ```
 
 What it does:
+
 - Only resources from this site's own origin can load. No CDNs, analytics, or third-party embeds.
 - **No inline scripts or `eval`**, which removes the most common XSS execution paths.
 - `object-src 'none'` blocks plugin content; `base-uri 'self'` prevents `<base>` tag hijacking; `form-action 'self'` stops form submissions to other origins.

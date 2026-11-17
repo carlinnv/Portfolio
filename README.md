@@ -1,6 +1,6 @@
 # Carlin Verano — Portfolio
 
-BS/MS student at NJIT pursuing a BS in Computer Science with a minor in Drones and Robotics, and a MS in Cybersecurity and Privacy. This repo is the source of my personal portfolio. 
+BS/MS student at NJIT pursuing a BS in Computer Science with a minor in Drones and Robotics, and a MS in Cybersecurity and Privacy. This repo is the source of my personal portfolio.
 
 **Live site:** https://carlinnv.github.io/Portfolio/
 
@@ -8,18 +8,18 @@ BS/MS student at NJIT pursuing a BS in Computer Science with a minor in Drones a
 
 ## About
 
-Hello! My name is Carlin Verano, and I am a BS/MS student in the NJIT Albert Dorman Honors College. As an NSF CyberAI Scholar pursuing a Master's in Cybersecurity and Privacy, my interests lie in securing physical systems and raising awareness on cyberattacks and threats. 
+Hello! My name is Carlin Verano, and I am a BS/MS student in the NJIT Albert Dorman Honors College. As an NSF CyberAI Scholar pursuing a Master's in Cybersecurity and Privacy, my interests lie in securing physical systems and raising awareness on cyberattacks and threats.
 
 ## Tech stack
 
-| Area | Tool |
-|---|---|
-| Framework | React + TypeScript |
-| Build tool | Vite |
-| Code quality | ESLint, Prettier |
-| Hosting | GitHub Pages (deployed via GitHub Actions) |
-| Supply-chain security | Dependabot (npm + GitHub Actions) |
-| Static analysis | CodeQL |
+| Area                  | Tool                                       |
+| --------------------- | ------------------------------------------ |
+| Framework             | React + TypeScript                         |
+| Build tool            | Vite                                       |
+| Code quality          | ESLint, Prettier                           |
+| Hosting               | GitHub Pages (deployed via GitHub Actions) |
+| Supply-chain security | Dependabot (npm + GitHub Actions)          |
+| Static analysis       | CodeQL                                     |
 
 ## Security and privacy
 
@@ -46,13 +46,13 @@ npm install
 npm run dev
 ```
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start the dev server |
-| `npm run build` | Type-check and build to `dist/` |
+| Command           | Description                        |
+| ----------------- | ---------------------------------- |
+| `npm run dev`     | Start the dev server               |
+| `npm run build`   | Type-check and build to `dist/`    |
 | `npm run preview` | Serve the production build locally |
-| `npm run lint` | Run ESLint |
-| `npm run format` | Format with Prettier |
+| `npm run lint`    | Run ESLint                         |
+| `npm run format`  | Format with Prettier               |
 
 ## Project structure
 

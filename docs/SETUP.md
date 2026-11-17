@@ -2,14 +2,14 @@
 
 Step-by-step setup for the portfolio repo. Claude: work through the phases in order, check off each box as it is done, and stop at any **⏸ CHECKPOINT** to confirm with me before continuing.
 
-| Setting | Value |
-|---|---|
-| GitHub username | `carlinnv` |
-| Repo name | `Portfolio` |
-| Site URL | https://carlinnv.github.io/Portfolio/ |
-| Vite `base` | `/Portfolio/` (case-sensitive: must match the repo name exactly) |
-| Design example | `template/Pixelution.html` (visual reference only: no code may be reused; local only, never committed) |
-| Fonts | Ubuntu Mono (`@fontsource/ubuntu-mono`), Source Sans 3 (`@fontsource/source-sans-3`) |
+| Setting         | Value                                                                                                  |
+| --------------- | ------------------------------------------------------------------------------------------------------ |
+| GitHub username | `carlinnv`                                                                                             |
+| Repo name       | `Portfolio`                                                                                            |
+| Site URL        | https://carlinnv.github.io/Portfolio/                                                                  |
+| Vite `base`     | `/Portfolio/` (case-sensitive: must match the repo name exactly)                                       |
+| Design example  | `template/Pixelution.html` (visual reference only: no code may be reused; local only, never committed) |
+| Fonts           | Ubuntu Mono (`@fontsource/ubuntu-mono`), Source Sans 3 (`@fontsource/source-sans-3`)                   |
 
 ---
 
@@ -84,29 +84,29 @@ The project lives at the repo root. The old `frontend/` scaffold has been delete
 
 ## Phase 2 — Prettier
 
-- [ ] Install:
+- [x] Install:
   ```bash
   npm install -D prettier eslint-config-prettier
   ```
-- [ ] Create `.prettierrc`:
+- [x] Create `.prettierrc`:
   ```json
   { "singleQuote": true, "semi": false }
   ```
-- [ ] Create `.prettierignore`:
+- [x] Create `.prettierignore`:
   ```
   dist
   node_modules
   template
   package-lock.json
   ```
-- [ ] In `eslint.config.js`, import `eslint-config-prettier` and add it as the **last** entry of the exported config.
-- [ ] Add scripts to `package.json`:
+- [x] In `eslint.config.js`, import `eslint-config-prettier` and add it as the **last** entry of the exported config.
+- [x] Add scripts to `package.json`:
   ```json
   "lint": "eslint .",
   "format": "prettier --write .",
   "format:check": "prettier --check ."
   ```
-- [ ] Run `npm run format` once on the whole project.
+- [x] Run `npm run format` once on the whole project.
 
 **Done when:** `npm run lint` and `npm run format:check` both pass with no errors.
 
@@ -116,7 +116,7 @@ The project lives at the repo root. The old `frontend/` scaffold has been delete
 
 The template's creator does not allow their code to be used as base code. Look at `template/Pixelution.html` for the general look and feel only. **Do not copy, port, or adapt its HTML, CSS, JavaScript, icons, or images.** Write all markup and styles from scratch.
 
-- [ ] Look at the template and describe its overall style in your own words: layout (e.g. sidebar vs. top nav, column widths), color palette, typography, spacing, and mood. **⏸ CHECKPOINT:** show me that description plus a proposed section and component breakdown for *my* portfolio (e.g. Header, About, Education, Projects, Experience, Contact) before writing components.
+- [ ] Look at the template and describe its overall style in your own words: layout (e.g. sidebar vs. top nav, column widths), color palette, typography, spacing, and mood. **⏸ CHECKPOINT:** show me that description plus a proposed section and component breakdown for _my_ portfolio (e.g. Header, About, Education, Projects, Experience, Contact) before writing components.
 - [ ] Write original CSS in `src/styles/` (design tokens such as colors and spacing as CSS custom properties) and import it in `main.tsx`.
 - [ ] Create one component per section in `src/components/`.
 - [ ] Put text content in typed data files in `src/content/` (e.g. `projects.ts`, `experience.ts`) with placeholder content I can fill in.
@@ -176,7 +176,8 @@ The template's creator does not allow their code to be used as base code. Look a
     base: '/Portfolio/',
     build: {
       // Never inline fonts as data: URIs; font-src 'self' would block them.
-      assetsInlineLimit: (file) => (/\.(woff2?|ttf|otf)$/.test(file) ? false : undefined),
+      assetsInlineLimit: (file) =>
+        /\.(woff2?|ttf|otf)$/.test(file) ? false : undefined,
     },
   })
   ```
