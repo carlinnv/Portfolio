@@ -1,0 +1,21 @@
+# Dependencies and build output
+node_modules
+dist
+dist-ssr
+*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Secrets and environment files
+.env*
+
+# OS and editor files
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Third-party theme used only as a visual example (must stay local)
+template/
