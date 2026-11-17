@@ -51,6 +51,7 @@
 
   --page-padding-top: 3.5rem; /* space above the profile photo and first window */
   --window-gap: 2.75rem; /* vertical space between windows */
+  --column-gap: 3.5rem; /* space between the sidebar and the windows */
 
   --border-width: 2px; /* card and image outline thickness */
   --shadow-offset: 4px; /* how far the pixel shadow sits from each card */

@@ -2,8 +2,11 @@
 
 .layout {
   display: grid;
-  gap: var(--space-6);
-  max-width: calc(var(--sidebar-width) + var(--content-width) + var(--space-6));
+  /* Row gap (when stacked on phones), then column gap (side by side). */
+  gap: var(--space-6) var(--column-gap);
+  max-width: calc(
+    var(--sidebar-width) + var(--content-width) + var(--column-gap)
+  );
   margin: 0 auto;
   padding: var(--page-padding-top) var(--space-4) var(--space-6);
 }
