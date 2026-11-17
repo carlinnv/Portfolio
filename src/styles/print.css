@@ -19,6 +19,17 @@
     display: none;
   }
 
+  /* Collapsed windows still print in full (no animation delay on paper). */
+  .card__collapse[data-open='false'] {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: none;
+  }
+
+  .card--collapsed .card__titlebar {
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
   .layout {
     display: block;
     max-width: none;

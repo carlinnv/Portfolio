@@ -3,7 +3,7 @@ import { Card } from './Card.tsx'
 
 export function Education() {
   return (
-    <Card id="education" title="Education">
+    <Card id="education" title="Education" defaultOpen>
       <ul className="entries">
         {education.map((entry) => (
           <li key={`${entry.school}-${entry.degree}`} className="entry">

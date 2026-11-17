@@ -39,21 +39,116 @@
   font-size: 1.25rem; /* 20px */
 }
 
-/* Three small decorative "window buttons". */
+/* Three "window buttons" in each title bar. The first one collapses and
+   expands the window; the other two are decorative. */
 .card__controls {
   display: flex;
+  align-items: center;
   gap: var(--space-1);
 }
 
-.card__controls span {
-  width: 0.625rem;
-  height: 0.625rem;
+.card__controls > span,
+.card__collapse-square {
+  width: 1rem;
+  height: 1rem;
   background: var(--color-surface);
   border: var(--border-width) solid var(--color-border);
 }
 
+/* The decorative squares let clicks pass through to the button's larger
+   click area that overlaps them slightly. */
+.card__controls > span {
+  pointer-events: none;
+}
+
 .card__body {
   padding: var(--space-5) var(--space-4);
+}
+
+/* ---------- Collapsible windows ---------- */
+
+/* The button is an invisible 24px square (easy to hit with a mouse or
+   finger) around the visible 16px square. The negative margin keeps the
+   title bar layout the same as the decorative squares. */
+.card__collapse-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin: -4px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.card__collapse-square {
+  position: relative;
+}
+
+.card__collapse-button:hover .card__collapse-square {
+  background: var(--color-menu-hover);
+}
+
+/* Pixel "−" (window open) that gains a vertical bar to become "+"
+   (window collapsed). */
+.card__collapse-icon,
+.card__collapse-icon::after {
+  position: absolute;
+  background: var(--color-titlebar-text);
+}
+
+.card__collapse-icon {
+  top: 5px;
+  left: 2px;
+  width: 8px;
+  height: 2px;
+}
+
+.card--collapsed .card__collapse-icon::after {
+  content: '';
+  top: -3px;
+  left: 3px;
+  width: 2px;
+  height: 8px;
+}
+
+/* No line under the title bar while the window is collapsed. */
+.card--collapsed .card__titlebar {
+  border-bottom: none;
+}
+
+/* Height animation: a one-row grid that shrinks from 1fr to 0fr. Collapsed
+   content also becomes invisible, so the Tab key and screen readers skip it. */
+.card__collapse {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.card__collapse[data-open='false'] {
+  grid-template-rows: 0fr;
+  visibility: hidden;
+}
+
+.card__collapse-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card__collapse {
+    transition:
+      grid-template-rows 0.25s ease,
+      visibility 0s linear;
+  }
+
+  /* Stay visible until the glide finishes, then hide. */
+  .card__collapse[data-open='false'] {
+    transition:
+      grid-template-rows 0.25s ease,
+      visibility 0s linear 0.25s;
+  }
 }
 
 /* Smaller window, used for the sidebar menu. */
