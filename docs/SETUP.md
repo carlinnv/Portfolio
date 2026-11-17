@@ -144,7 +144,7 @@ The template's creator does not allow their code to be used as base code. Look a
 
 ## Phase 5 — Content-Security-Policy `<meta>` tag
 
-- [ ] Add a build-only plugin to `vite.config.ts` that injects the CSP into `index.html` (build only, because Vite's dev server uses inline scripts):
+- [x] Add a build-only plugin to `vite.config.ts` that injects the CSP into `index.html` (build only, because Vite's dev server uses inline scripts):
   ```ts
   import { defineConfig, type Plugin } from 'vite'
   import react from '@vitejs/plugin-react'
@@ -181,12 +181,12 @@ The template's creator does not allow their code to be used as base code. Look a
     },
   })
   ```
-- [ ] Also add to `index.html` `<head>`:
+- [x] Also add to `index.html` `<head>`:
   ```html
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   ```
-- [ ] Run `npm run build`, then confirm `dist/index.html` contains the CSP tag.
-- [ ] If anything needs a looser policy (e.g. inline styles), **⏸ CHECKPOINT:** tell me what and why instead of changing it.
+- [x] Run `npm run build`, then confirm `dist/index.html` contains the CSP tag.
+- [x] If anything needs a looser policy (e.g. inline styles), **⏸ CHECKPOINT:** tell me what and why instead of changing it.
 
 **Done when:** `dist/index.html` contains the CSP meta tag and `npm run preview` renders the site correctly. (I will check the browser console for CSP violations myself.)
 
