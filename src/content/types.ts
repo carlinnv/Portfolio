@@ -41,9 +41,15 @@ export interface ExperienceEntry {
 
 export interface Project {
   title: string
-  description: string
+  /** Where it was made, e.g. 'HackPrinceton Fall 2026' or a course. Optional. */
+  context?: string
+  /** e.g. 'Nov. 2026'. Optional. */
+  date?: string
+  /** One string per bullet point. */
+  highlights: string[]
+  /** Technologies, shown as tags. */
   tags: string[]
-  /** Optional link, e.g. a GitHub repo or write-up. */
+  /** Optional link, e.g. a GitHub repo, Devpost page, or write-up. */
   link?: { href: string; label: string }
 }
 
@@ -57,4 +63,12 @@ export interface Moment {
   caption: string
   /** Free text, e.g. 'Summer 2025'. Optional. */
   date?: string
+}
+
+export interface Award {
+  /** e.g. '2023' or '2026 – Present'. */
+  years: string
+  title: string
+  /** Who gave it, e.g. 'CyberPatriot'. Optional. */
+  organization?: string
 }

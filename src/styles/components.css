@@ -334,6 +334,43 @@
   gap: var(--space-5);
 }
 
+/* ---------- Awards & Honors ---------- */
+
+.awards {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Years on the left, the award on the right (stacked on narrow screens). */
+.award {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: var(--space-1) var(--space-4);
+  padding: var(--space-2) 0;
+}
+
+.award + .award {
+  border-top: var(--border-width) dashed var(--color-rule);
+}
+
+.award__years {
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: var(--font-size-small);
+  padding-top: 0.15em;
+}
+
+.award__org {
+  color: var(--color-muted);
+}
+
+@media (max-width: 30rem) {
+  .award {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Moments (photo carousel) ---------- */
 
 .carousel {

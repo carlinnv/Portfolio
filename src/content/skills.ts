@@ -1,10 +1,57 @@
 import type { SkillGroup } from './types.ts'
 
-// Placeholder groups: rename them and list your own skills.
 export const skillGroups: SkillGroup[] = [
   {
-    label: 'Placeholder group',
-    skills: ['Skill one', 'Skill two', 'Skill three'],
+    label: 'Languages',
+    skills: [
+      'Python',
+      'Java',
+      'C++',
+      'C',
+      'C#',
+      'HTML',
+      'JavaScript',
+      'CSS',
+      'SQL',
+    ],
   },
-  { label: 'Placeholder group', skills: ['Skill one', 'Skill two'] },
+  {
+    label: 'Frameworks & Libraries',
+    skills: [
+      'Pandas',
+      'Plotly',
+      'Scikit-learn',
+      'NumPy',
+      'PyTorch (learning)',
+      'Google Agent Development Kit',
+      'Gemini API',
+      'Node.js',
+      'React',
+      'Flask',
+      'Bootstrap',
+      'MongoDB',
+      'SQLite',
+      'SQLAlchemy',
+      'OpenCV',
+      'Vite',
+      'Tailwind CSS',
+    ],
+  },
+  {
+    label: 'Tools & Platforms',
+    skills: [
+      'Git',
+      'GitHub',
+      'GitLab',
+      'GitHub Copilot',
+      'Claude Code',
+      'Jira',
+      'Visual Studio Code',
+      'Blender',
+      'Unity',
+      'AWS',
+      'MATLAB',
+      'Docker (learning)',
+    ],
+  },
 ]

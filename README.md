@@ -8,7 +8,7 @@ BS/MS student at NJIT pursuing a BS in Computer Science with a minor in Drones a
 
 ## About
 
-Hello! My name is Carlin Verano, and I am a BS/MS student in the NJIT Albert Dorman Honors College. As an NSF CyberAI Scholar pursuing a Master's in Cybersecurity and Privacy, my interests lie in securing physical systems and raising awareness on cyberattacks and threats.
+Hello! My name is Carlin Verano, and I am a BS/MS student in the NJIT Albert Dorman Honors College. As a CyberAI Scholarship for Service (SFS) Scholar pursuing a Master's in Cybersecurity and Privacy, my interests lie in securing physical systems and raising awareness on cyberattacks and threats.
 
 ## Tech stack
 

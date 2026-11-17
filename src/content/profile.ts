@@ -12,7 +12,7 @@ export const profile: Profile = {
   },
   about: [
     'Hello! My name is Carlin Verano, and I am a BS/MS student in the NJIT Albert Dorman Honors College, pursuing a BS in Computer Science with a minor in Drones and Robotics and an MS in Cybersecurity and Privacy.',
-    'As an NSF CyberAI Scholar, my interests lie in securing physical systems and raising awareness of cyberattacks and threats.',
+    'As a CyberAI Scholarship for Service (SFS) Scholar, my interests lie in securing physical systems and raising awareness of cyberattacks and threats.',
   ],
   email: 'carlinverano@gmail.com',
   linkedinUrl: 'https://www.linkedin.com/in/carlinverano/',
