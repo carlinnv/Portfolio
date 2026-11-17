@@ -39,6 +39,25 @@
     box-shadow: none;
   }
 
+  /* Print every moment as a grid, not just the photo on screen. */
+  .carousel__controls {
+    display: none;
+  }
+
+  .carousel__slides {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .carousel__slide[hidden] {
+    display: block;
+  }
+
+  .carousel__slide {
+    break-inside: avoid;
+  }
+
   /* Show where external links go, since they can't be clicked on paper. */
   .card a[href^='http']::after,
   .card a[href^='mailto:']::after {

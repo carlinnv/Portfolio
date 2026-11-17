@@ -15,28 +15,23 @@ export function Sidebar() {
       <h1 className="sidebar__name">{profile.name}</h1>
       <p className="sidebar__tagline">{profile.tagline}</p>
 
-      {/* A small "window" holding the section links. */}
-      <nav
-        className="card card--compact sidebar__nav"
-        aria-labelledby="nav-title"
-      >
-        <div className="card__titlebar">
-          <span id="nav-title" className="card__title">
-            Menu
-          </span>
-          <span className="card__controls" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </span>
-        </div>
-        <ul className="nav-list">
-          {sections.map((section) => (
-            <li key={section.id}>
-              <a href={`#${section.id}`}>{section.label}</a>
-            </li>
-          ))}
-        </ul>
+      {/* A small "window" that opens like a dropdown, one section per row.
+          <details> is built into browsers: it works with mouse, keyboard
+          (Enter/Space), and screen readers without any JavaScript. */}
+      <nav className="sidebar__nav" aria-label="Sections">
+        <details className="card card--compact menu">
+          <summary className="card__titlebar menu__toggle">
+            <span className="card__title">Menu</span>
+            <span className="menu__caret" aria-hidden="true" />
+          </summary>
+          <ul className="nav-list">
+            {sections.map((section) => (
+              <li key={section.id}>
+                <a href={`#${section.id}`}>{section.label}</a>
+              </li>
+            ))}
+          </ul>
+        </details>
       </nav>
 
       <ContactLinks />

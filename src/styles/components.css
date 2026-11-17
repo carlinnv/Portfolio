@@ -93,23 +93,94 @@
   margin: var(--space-5) 0;
 }
 
-/* Section links in two compact columns. */
+/* ---------- Menu dropdown ---------- */
+
+/* The title bar is the button that opens and closes the menu. */
+.menu__toggle {
+  cursor: pointer;
+  list-style: none; /* hide the browser's default triangle */
+}
+
+.menu__toggle::-webkit-details-marker {
+  display: none; /* same, for Safari */
+}
+
+.menu__toggle:hover {
+  background: var(--color-menu-hover);
+}
+
+/* No line under the title bar while the menu is closed. */
+.menu:not([open]) > .menu__toggle {
+  border-bottom: none;
+}
+
+/* Small pixel arrow: points down when closed, up when open. */
+.menu__caret {
+  width: 0;
+  height: 0;
+  border-top: 0.4rem solid var(--color-titlebar-text);
+  border-right: 0.35rem solid transparent;
+  border-left: 0.35rem solid transparent;
+}
+
+.menu[open] .menu__caret {
+  transform: rotate(180deg);
+}
+
+/* Glide the menu open and closed instead of snapping. Uses newer CSS:
+   browsers that don't support it simply open the menu instantly. Skipped
+   for people who have asked their system for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .menu {
+    interpolate-size: allow-keywords; /* lets height animate to "auto" */
+  }
+
+  .menu::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 0.25s ease,
+      content-visibility 0.25s allow-discrete;
+  }
+
+  .menu[open]::details-content {
+    height: auto;
+  }
+
+  .menu__caret {
+    transition: transform 0.25s ease;
+  }
+}
+
+/* One section per row, separated by dashed lines. */
 .nav-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-1) var(--space-3);
   margin: 0;
-  padding: var(--space-3);
+  padding: 0;
   list-style: none;
   font-family: var(--font-display);
   font-size: var(--font-size-small);
 }
 
+.nav-list li + li {
+  border-top: var(--border-width) dashed var(--color-rule);
+}
+
 .nav-list a {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-1) 0;
+  padding: var(--space-2) var(--space-3);
+  text-decoration: none;
+}
+
+.nav-list a:hover {
+  background: var(--color-menu-hover);
+  text-decoration: underline;
+}
+
+/* Keep the focus ring inside the menu window. */
+.nav-list a:focus-visible {
+  outline-offset: -3px;
 }
 
 /* Small square "pixel" bullet before each nav link. */
@@ -202,37 +273,92 @@
   gap: var(--space-5);
 }
 
-/* ---------- Moments (photo gallery) ---------- */
+/* ---------- Moments (photo carousel) ---------- */
 
-.moments {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  gap: var(--space-5);
-  margin: var(--space-4) 0 0;
-  padding: 0;
-  list-style: none;
+.carousel {
+  margin-top: var(--space-4);
 }
 
-.moments figure {
+/* Let phones scroll the page vertically, but leave sideways swipes to us. */
+.carousel__slides {
+  touch-action: pan-y;
+}
+
+.carousel__slide {
   margin: 0;
 }
 
-.moments img {
+.carousel__slide img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border: var(--border-width) solid var(--color-border);
 }
 
-.moments figcaption {
+.carousel__slide figcaption {
   margin-top: var(--space-2);
-  font-size: var(--font-size-small);
 }
 
-.moments__date {
+.carousel__date {
   display: block;
   color: var(--color-muted);
   font-family: var(--font-display);
+  font-size: var(--font-size-small);
+}
+
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* Retro "pixel" buttons that press down when clicked. */
+.carousel__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  color: var(--color-titlebar-text);
+  background: var(--color-titlebar);
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: 2px 2px 0 var(--color-border);
+  font-family: var(--font-display);
+  font-size: var(--font-size-small);
+  cursor: pointer;
+}
+
+.carousel__button:hover {
+  background: var(--color-menu-hover);
+}
+
+.carousel__button:active {
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+/* Small pixel arrows inside the buttons. */
+.carousel__arrow {
+  width: 0;
+  height: 0;
+  border-top: 0.35rem solid transparent;
+  border-bottom: 0.35rem solid transparent;
+}
+
+.carousel__arrow--prev {
+  border-right: 0.4rem solid currentColor;
+}
+
+.carousel__arrow--next {
+  border-left: 0.4rem solid currentColor;
+}
+
+.carousel__counter {
+  margin: 0;
+  color: var(--color-muted);
+  font-family: var(--font-display);
+  font-size: var(--font-size-small);
 }
 
 /* ---------- Footer ---------- */

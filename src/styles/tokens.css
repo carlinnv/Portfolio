@@ -16,6 +16,7 @@
   --color-titlebar: #cdd8c4; /* card title bars (pale sage) */
   --color-tag: #e3edf0; /* skill/technology tag background (pale blue) */
   --color-highlight: #fbd3bd; /* peach: text selection */
+  --color-menu-hover: #eef3ea; /* menu title bar and rows on hover */
 
   /* ---------- Text ---------- */
   --color-text: #33504d; /* body text: 7.95:1 on page, 8.77:1 on cards */

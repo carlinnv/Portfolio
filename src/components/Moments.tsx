@@ -1,32 +1,115 @@
+import { useRef, useState, type PointerEvent } from 'react'
 import { moments } from '../content/moments.ts'
 import { Card } from './Card.tsx'
 
+/** How far (in pixels) a finger must move sideways to count as a swipe. */
+const SWIPE_DISTANCE = 40
+
+/**
+ * Photo carousel: one moment at a time, with Previous/Next buttons and swipe
+ * on touch screens. It never advances on its own. Follows the WAI-ARIA
+ * carousel pattern so screen readers announce "slide 2 of 5" and each caption.
+ */
 export function Moments() {
+  const [current, setCurrent] = useState(0)
+  const swipeStartX = useRef<number | null>(null)
+  const count = moments.length
+
+  // Wraps around: Next on the last photo goes back to the first.
+  const go = (step: number) =>
+    setCurrent((index) => (index + step + count) % count)
+
+  const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'touch') swipeStartX.current = event.clientX
+  }
+
+  const onPointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (swipeStartX.current === null) return
+    const distance = event.clientX - swipeStartX.current
+    swipeStartX.current = null
+    if (Math.abs(distance) >= SWIPE_DISTANCE) go(distance < 0 ? 1 : -1)
+  }
+
   return (
     <Card id="moments" title="Moments">
       <p>A few things from outside work and school.</p>
-      <ul className="moments">
-        {moments.map((moment, index) => (
-          <li key={`${moment.image.src}-${index}`}>
-            <figure>
+      <div
+        className="carousel"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Moments photos"
+      >
+        <div
+          id="moments-slides"
+          className="carousel__slides"
+          // Announces the newly shown photo's caption to screen readers.
+          aria-live="polite"
+          onPointerDown={onPointerDown}
+          onPointerUp={onPointerUp}
+          onPointerCancel={() => {
+            swipeStartX.current = null
+          }}
+        >
+          {moments.map((moment, index) => (
+            <figure
+              key={`${moment.image.src}-${index}`}
+              className="carousel__slide"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${index + 1} of ${count}`}
+              hidden={index !== current}
+            >
               <img
                 src={moment.image.src}
                 alt={moment.image.alt}
-                width="400"
-                height="300"
+                width="800"
+                height="600"
                 loading="lazy"
                 decoding="async"
               />
               <figcaption>
                 {moment.caption}
                 {moment.date && (
-                  <span className="moments__date">{moment.date}</span>
+                  <span className="carousel__date">{moment.date}</span>
                 )}
               </figcaption>
             </figure>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+
+        {count > 1 && (
+          <div className="carousel__controls">
+            <button
+              type="button"
+              className="carousel__button"
+              aria-controls="moments-slides"
+              onClick={() => go(-1)}
+            >
+              <span
+                className="carousel__arrow carousel__arrow--prev"
+                aria-hidden="true"
+              />
+              Previous
+            </button>
+            {/* Screen readers get this from each slide's label instead. */}
+            <p className="carousel__counter" aria-hidden="true">
+              {current + 1} of {count}
+            </p>
+            <button
+              type="button"
+              className="carousel__button"
+              aria-controls="moments-slides"
+              onClick={() => go(1)}
+            >
+              Next
+              <span
+                className="carousel__arrow carousel__arrow--next"
+                aria-hidden="true"
+              />
+            </button>
+          </div>
+        )}
+      </div>
     </Card>
   )
 }
